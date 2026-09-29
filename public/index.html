@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cloudflare Workers Static Assets - Edge Demonstration">
+  <meta name="color-scheme" content="dark">
+  <title>Edge Static Dashboard | Cloudflare Workers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="app-layout">
+    <header class="app-header">
+      <div class="brand-group">
+        <div class="brand-icon" aria-hidden="true">⚡</div>
+        <div class="brand-text">
+          <h1 class="brand-title">Edge Static App</h1>
+          <p class="brand-subtitle">Cloudflare Workers Platform</p>
+        </div>
+      </div>
+      <div id="status-badge" class="badge badge-active" role="status" aria-live="polite">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span class="badge-text">Cloudflare Workers Edge: Active</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="card metrics-card" aria-labelledby="metrics-heading">
+        <div class="card-header">
+          <h2 id="metrics-heading" class="card-title">Telemetry & Activity</h2>
+          <span class="card-tag">Realtime</span>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-item">
+            <span class="metric-label">Total Events</span>
+            <span id="click-count" class="metric-value">0</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Network Tier</span>
+            <span class="metric-value metric-accent">Global Edge</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Execution Model</span>
+            <span class="metric-value">Static V8 Isolate</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card controls-card" aria-labelledby="controls-heading">
+        <div class="card-header">
+          <h2 id="controls-heading" class="card-title">Action Controls</h2>
+          <div id="state-indicator" class="state-badge state-ready" role="status">Ready</div>
+        </div>
+        <div class="action-toolbar">
+          <button id="btn-action" class="btn btn-primary" type="button">
+            <span class="btn-icon" aria-hidden="true">📡</span>
+            <span class="btn-text">Ping Edge Event</span>
+          </button>
+          <button id="clear-btn" class="btn btn-secondary" type="button" aria-label="Reset log console">
+            <span class="btn-icon" aria-hidden="true">🗑️</span>
+            <span class="btn-text">Reset Logs</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="card console-card" aria-labelledby="console-heading">
+        <div class="card-header">
+          <h2 id="console-heading" class="card-title">Event Log Stream</h2>
+          <span class="console-counter" id="log-counter">0 entries</span>
+        </div>
+        <div class="console-container">
+          <pre id="log-console" class="log-viewport empty-state" role="region" aria-live="polite" tabindex="0">Waiting for edge events...</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p class="footer-meta">Zero-build Static Assets &bull; Pure ES6/CSS3 &bull; Cloudflare Global Edge</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
