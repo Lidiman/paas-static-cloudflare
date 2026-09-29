@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "preview": "wrangler dev"
+    "preview": "wrangler dev",
+    "test:smoke": "python3 smoke_test.py"
   },
   "devDependencies": {
     "wrangler": "^3.114.15"
